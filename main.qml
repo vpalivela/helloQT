@@ -2,27 +2,29 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 
 ApplicationWindow {
+    id: applicationWindow1
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
-
-    menuBar: MenuBar {
-        Menu {
-            title: qsTr("File")
-            MenuItem {
-                text: qsTr("&Open")
-                onTriggered: console.log("Open action triggered");
-            }
-            MenuItem {
-                text: qsTr("Exit")
-                onTriggered: Qt.quit();
-            }
-        }
-    }
+    title: "Hello World"
+    color: "white"
 
     Text {
-        text: qsTr("Hello World")
+        id: myLabel
+        text: "Hello World"
+        color: "#000000"
         anchors.centerIn: parent
+    }
+
+    Button {
+        id: myButton
+        y: 227
+        text: "Button"
+        anchors.left: myLabel.right
+        anchors.leftMargin: 33
+
+        onClicked: {
+            myLabel.text = "It Worked!"
+        }
     }
 }
